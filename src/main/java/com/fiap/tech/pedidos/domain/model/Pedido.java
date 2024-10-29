@@ -1,28 +1,18 @@
 package com.fiap.tech.pedidos.domain.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
+@Data
 public class Pedido {
 
 	private Long id;
 
 	private Long idCliente;
 
-	// private List<String> itens;
-	private Long idProduto;
-
-	private int quantidade;
-
-	private double valorUnitario;
+	private List<ItemPedido> itens;
 
 	private LocalDateTime dataPedido;
 

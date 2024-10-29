@@ -17,7 +17,8 @@ public class FindPedidoByIdUseCase {
 
 	public Pedido buscarPorId(Long id) {
 		return mapper.toDomain(pedidoRepository.findById(id)
-			.orElseThrow(() -> new ResourceNotFoundException("Pedido não encontrado")));
+			.orElseThrow(
+					() -> new ResourceNotFoundException(String.format("O pedido com o id %d não foi encontrado", id))));
 	}
 
 }

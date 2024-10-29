@@ -1,12 +1,14 @@
 package com.fiap.tech.pedidos.infra.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "pedido")
@@ -20,15 +22,14 @@ public class PedidoEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@NotNull
 	private Long idCliente;
 
-	// private List<String> itens;
-	private Long idProduto;
+	@ElementCollection
+	@CollectionTable(name = "pedido_itens", joinColumns = @JoinColumn(name = "pedido_id"))
+	private List<ItemPedidoEntity> itens;
 
-	private int quantidade;
-
-	private double valorUnitario;
-
+	@NotNull
 	private LocalDateTime dataPedido;
 
 	private LocalDateTime dataEntrega;
