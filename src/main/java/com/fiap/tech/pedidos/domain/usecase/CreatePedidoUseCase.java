@@ -19,6 +19,7 @@ public class CreatePedidoUseCase {
 
 	@Transactional
 	public Pedido criarPedido(Pedido pedido) {
+
 		pedido.setDataPedido(LocalDateTime.now());
 		return mapper.toDomain(pedidoRepository.save(mapper.toEntity(pedido)));
 	}

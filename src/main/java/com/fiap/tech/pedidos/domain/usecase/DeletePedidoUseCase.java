@@ -12,11 +12,11 @@ public class DeletePedidoUseCase {
 	private final PedidoRepository pedidoRepository;
 
 	public void deletarPedido(Long id) throws ResourceNotFoundException {
-//pedidoRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(String.format("O pedido %d já não existe", id)));
-		if(pedidoRepository.findById(id).isPresent()) {
+		if (pedidoRepository.findById(id).isPresent()) {
 			pedidoRepository.deleteById(id);
-		}else{
-			throw new ResourceNotFoundException(String.format("O pedido %d já não existe", id);
+		}
+		else {
+			throw new ResourceNotFoundException(String.format("O pedido %d já não existe", id));
 		}
 	}
 
